@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace myapp
 {
@@ -6,7 +7,112 @@ namespace myapp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            List<ville> listeville = new List<ville>();
+
+            Console.WriteLine("Bienvenue dans mon appli de gestion de ville");
+
+            while (true)
+            {
+                string choix_util = Menu_util();
+
+                if (choix_util == "1")
+                {
+                    ville v = createville();
+                    listeville.Add(v);
+                }
+                else if (choix_util == "2")
+                {
+                    affiche(listeville);
+                }
+                else if (choix_util == "q")
+                {
+                    System.Environment.Exit(1);
+                }
+                else
+                {
+                    Console.WriteLine("Je n'ai pas compris");
+                }
+            }
+            Console.ReadKey();
+        }
+        public static string Menu_util()
+        {
+            string choix_util;
+            Console.WriteLine("1.Creer une nouvelle ville");
+            Console.WriteLine("2.Afficher l'esemble des villes");
+            Console.WriteLine("q.Quitter");
+            choix_util = Console.ReadLine();
+
+            return choix_util;
+        }
+
+        public static ville createville()
+        {
+            ville v = new ville();
+
+
+            v.nom = demande_prenom();
+
+            v.cp = demande_entier("Code Postal:");
+
+            v.nbh = demande_entier("Nombre D'habitant:");
+
+            return v;
+
+        }
+
+
+        public static string demande_prenom()
+        {
+            Console.WriteLine("Nom:");
+            string Prenom = Console.ReadLine();
+
+
+            while (string.IsNullOrEmpty(Prenom))
+            {
+                Console.WriteLine("Veuillez saisir quelque chose");
+                Prenom = Console.ReadLine();
+            }
+
+            return Prenom;
+        }
+
+        public static int demande_entier(string message)
+        {
+            Console.WriteLine(message);
+            int valeurconverti;
+            string entier;
+            entier = Console.ReadLine();
+
+           
+            while (!(int.TryParse(entier, out valeurconverti) || valeurconverti < 0))
+            {
+                Console.WriteLine("Entrez un nombre valide svp");
+                entier = Console.ReadLine();
+            }
+
+            return valeurconverti;
+        }
+
+        public static void affiche(List<ville> listeville)
+        {
+            foreach (ville v in listeville)
+            {
+                string message;
+                message = creer_message(v);
+                Console.WriteLine(message);
+
+            }
+        }
+        public static string creer_message(ville v)
+        {
+            string message;
+           
+                message = "Nom: " + v.nom.ToUpper() + "," + " Code Postal: " + v.cp  + "," + "\n" + "Nombre D'habitant: " + v.nbh + "\n" + "------------------------------------------------";
+
+            return (message);
         }
     }
+    
 }
