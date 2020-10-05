@@ -11,7 +11,7 @@ namespace myapp
             List<ville> listeville = new List<ville>();
 
             Console.WriteLine("Bienvenue dans mon appli de gestion de ville");
-            Console.WriteLine("Que voulez vu faire?");
+            Console.WriteLine("Que voulez vous faire?");
 
             while (true)
             {
@@ -36,7 +36,7 @@ namespace myapp
                 }
                 else
                 {
-                    Console.WriteLine("Je n'ai pas compris");
+                    Console.WriteLine("Choississez entre 1, 2, 3, q!!!");
                 }
             }
             Console.ReadKey();
@@ -90,8 +90,10 @@ namespace myapp
             int valeurconverti;
             string entier;
             entier = Console.ReadLine();
+            // formatage pour la question 6 mais ne marche pas!!!
+            string.Format("{0:#,0}", entier);
 
-           
+
             while (!(int.TryParse(entier, out valeurconverti) || valeurconverti < 0))
             {
                 Console.WriteLine("Entrez un nombre valide svp");
