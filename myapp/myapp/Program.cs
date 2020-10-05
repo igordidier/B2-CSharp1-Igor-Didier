@@ -11,6 +11,7 @@ namespace myapp
             List<ville> listeville = new List<ville>();
 
             Console.WriteLine("Bienvenue dans mon appli de gestion de ville");
+            Console.WriteLine("Que voulez vu faire?");
 
             while (true)
             {
@@ -24,6 +25,10 @@ namespace myapp
                 else if (choix_util == "2")
                 {
                     affiche(listeville);
+                }
+                else if (choix_util == "3")
+                {
+                    Affiche2(listeville);
                 }
                 else if (choix_util == "q")
                 {
@@ -41,6 +46,7 @@ namespace myapp
             string choix_util;
             Console.WriteLine("1.Creer une nouvelle ville");
             Console.WriteLine("2.Afficher l'esemble des villes");
+            Console.WriteLine("3.Afficher le nombre total d'habitant");
             Console.WriteLine("q.Quitter");
             choix_util = Console.ReadLine();
 
@@ -113,6 +119,28 @@ namespace myapp
 
             return (message);
         }
+
+        //Total d'habitant
+        public static void Affiche2(List<ville> listeville)
+        {
+            int nmb_total = 0;
+
+            foreach (ville v in listeville)
+            {
+                
+                nmb_total = nmb_total + v.nbh;
+
+                
+                
+
+            }
+            Console.WriteLine("Nombre total d'habitant: " + nmb_total);
+        }
+
+
+
+
     }
+
     
 }
